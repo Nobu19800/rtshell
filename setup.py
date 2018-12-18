@@ -290,9 +290,12 @@ class BuildShellSupport(Command):
         COMPOPT_NOSPACE = 'compopt -o nospace'
         COMPOPT_FILENAME = 'compopt -o filenames'
         COMPLETE_NOSPACE = '-o nospace'
-        with open(os.path.join('data', 'bash_completion.in'), 'rt') as f:
-            bash_comp = f.read()
-            bash_comp = bash_comp.decode('utf-8')
+        if sys.version_info[0] == 2:
+            with open(os.path.join('data', 'bash_completion.in'), 'rt') as f:
+                bash_comp = f.read()
+        else:
+            with open(os.path.join('data', 'bash_completion.in'), 'rt', encoding='utf-8') as f:
+                bash_comp = f.read()
         if sys.platform == 'darwin':
             bash_comp = bash_comp.replace('@COMPOPT_NOSPACE@', ':')
             bash_comp = bash_comp.replace('@COMPOPT_FILENAMES@', ':')
