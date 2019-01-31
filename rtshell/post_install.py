@@ -168,15 +168,24 @@ def add_shell_support(prefix, bashrc_path=None):
 
 def post_install_unix(prefix, bashrc, interactive, remove=False):
     # Link the manpages to the manpage directory under the prefix
-    ans = raw_input('Link man pages? ') if interactive else 'y'
+    if sys.version_info[0] == 2:
+        ans = raw_input('Link man pages? ') if interactive else 'y'
+    else:
+        ans = input('Link man pages? ') if interactive else 'y'
     if ans.lower() == 'y' or ans.lower() == 'yes':
         link_man_pages(prefix, remove)
     # Link documentation to <prefix>/share/doc/rtshell
-    ans = raw_input('Link documentation? ') if interactive else 'y'
+    if sys.version_info[0] == 2:
+        ans = raw_input('Link documentation? ') if interactive else 'y'
+    else:
+        ans = input('Link documentation? ') if interactive else 'y'
     if ans.lower() == 'y' or ans.lower() == 'yes':
         link_documentation(prefix, remove)
     # Add sourcing of share/rtshell/shell_support to .bashrc or .bash_profile
-    ans = raw_input('Add shell support to .bashrc? ') if interactive else 'y'
+    if sys.version_info[0] == 2:
+        ans = raw_input('Add shell support to .bashrc? ') if interactive else 'y'
+    else:
+        ans = input('Add shell support to .bashrc? ') if interactive else 'y'
     if ans.lower() == 'y' or ans.lower() == 'yes':
         add_shell_support(prefix, bashrc_path=bashrc)
 
