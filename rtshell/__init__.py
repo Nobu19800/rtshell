@@ -18,7 +18,7 @@ Commands for managing RT Components and RTM-based systems from a shell.
 '''
 
 
-RTSH_VERSION = '4.2.1'
+RTSH_VERSION = '4.2.2'
 
 
 # vim: tw=79
