@@ -1,11 +1,11 @@
 =======
-RTShell
+rtshell
 =======
 
 Introduction
 ============
 
-RTShell provides commands used to manage individual RT components and
+rtshell provides commands used to manage individual RT components and
 managers, as well as complete RT Systems. It can be used with the
 OpenRTM-aist middleware or middlewares that use a compatible CORBA-based
 introspection system.
@@ -24,7 +24,7 @@ components on low-resource systems, systems where a GUI is not available
 (particularly where no network connection is available to manage
 components from another computer), as well as those who face other
 difficulties using RTSystemEditor.  Being familiar with using a
-command-line is a benefit when using these commands of RTShell.
+command-line is a benefit when using these commands of rtshell.
 
 This software is developed at the National Institute of Advanced
 Industrial Science and Technology. Approval number
@@ -41,12 +41,12 @@ Requirements
 
 omniORB-py 4.x is required.
 
-RTShell requires rtctree. It must be installed for the commands to function.
+rtshell requires rtctree. It must be installed for the commands to function.
 
 The commands that work with RtsProfile files require rtsprofile. It must be
 installed for these commands to function/
 
-RTShell requires Python 2.7. It will not function with an earlier version of
+rtshell requires Python 2.7. It will not function with an earlier version of
 Python. It has not been tested with Python 3 and it is likely that several
 changes will be necessary to make it function using this version of Python.
 
@@ -55,7 +55,7 @@ rtprint, rtinject and rtlog require the Python version of OpenRTM-aist.
 Sphinx must be installed to build the documentation, if installing from source
 (method 2).
 
-If RTShell is installed using pip (method 1, below), RTCTree and RTSProfile
+If rtshell is installed using pip (method 1, below), RTCTree and RTSProfile
 will be installed automatically. omniORB-py and OpenRTM-python must still be
 installed manually.
 
@@ -70,7 +70,7 @@ There are several methods of installation available:
  a. Install pip if it is not already installed.
     See https://pip.pypa.io/en/latest/installing/
 
- b. Execute the following command to install RTShell::
+ b. Execute the following command to install rtshell::
 
     $ pip install rtshell
 
@@ -92,7 +92,7 @@ There are several methods of installation available:
     $ cd /home/blurgle/src/
     $ tar -xvzf rtshell.tar.gz
 
- b. Run setup.py to install RTShell to your default Python installation::
+ b. Run setup.py to install rtshell to your default Python installation::
 
     $ python setup.py install
 
@@ -126,7 +126,7 @@ Documentation is available in the form of man pages (on Windows, these
 are available as HTML files). These will be installed under
 ``${prefix}/share/man``.  You must add this folder to your system's
 ``$MANPATH`` environment variable to be able to use them. For example,
-if you installed RTShell into /home/blag, add the following line to your
+if you installed rtshell into /home/blag, add the following line to your
 ``.bashrc``::
 
   export MANPATH=/home/blag/share/man:${MANPATH}
@@ -236,7 +236,7 @@ Changelog
 - rtresurrect: Don't recreate existing connections.
 - rtteardown: Fail if the connector ID doesn't match.
 - rtresurrect/rtstart/rtstop/rtteardown: Accept input from standard input.
-- Refactored former rtsshell commands into RTShell-style libraries.
+- Refactored former rtsshell commands into rtshell-style libraries.
 - Added tests.
 
 
