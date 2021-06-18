@@ -389,8 +389,8 @@ install.sub_commands = [c for c in install.sub_commands
 install.sub_commands.insert(2, ('install_scripts', None))
 
 
-setuptools.setup(name='rtshell',
-                 version='4.2.2',
+setuptools.setup(name='rtshell-aist',
+                 version='4.2.3',
                  description='Shell commands for managing RT Components and RT Systems.',
                  author='Geoffrey Biggs and contributors',
                  author_email='geoffrey.biggs@aist.go.jp',
@@ -405,6 +405,11 @@ setuptools.setup(name='rtshell',
                      'Natural Language :: English',
                      'Operating System :: OS Independent',
                      'Programming Language :: Python :: 2.7',
+                     'Programming Language :: Python :: 3.5',
+                     'Programming Language :: Python :: 3.6',
+                     'Programming Language :: Python :: 3.7',
+                     'Programming Language :: Python :: 3.8',
+                     'Programming Language :: Python :: 3.9',
                      'Topic :: Software Development',
                      'Topic :: Utilities'
                      ],
