@@ -414,7 +414,7 @@ setuptools.setup(name='rtshell-aist',
                      'Topic :: Utilities'
                      ],
                  packages=setuptools.find_packages(),
-                 install_requires=['rtctree>=4', 'rtsprofile>=4'],
+                 install_requires=['rtctree-aist>=4', 'rtsprofile-aist>=4'],
                  cmdclass={'build_shell_support': BuildShellSupport,
                            'install_shell_support': InstallShellSupport,
                            'build_documentation': BuildDocumentation,
