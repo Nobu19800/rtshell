@@ -75,19 +75,19 @@ def clean_props(props):
     return new_props
 
 
-def data_connection_actions(rtsprofile):
+def data_connection_actions(rtsprofile, strict=False):
     # The ports on those components in any required connections must also be
     # present.
     checks = []
     make_connections = []
     for conn in rtsprofile.required_data_connections():
-        source_comp = rtsprofile.find_comp_by_target(conn.source_data_port)
+        source_comp = rtsprofile.find_comp_by_target(conn.source_data_port, strict)
         source_path = '/' + source_comp.path_uri
         source_port = conn.source_data_port.port_name
         prefix = source_comp.instance_name + '.'
         if source_port.startswith(prefix):
             source_port = source_port[len(prefix):]
-        dest_comp = rtsprofile.find_comp_by_target(conn.target_data_port)
+        dest_comp = rtsprofile.find_comp_by_target(conn.target_data_port, strict)
         dest_path = '/' + dest_comp.path_uri
         dest_port = conn.target_data_port.port_name
         prefix = dest_comp.instance_name + '.'
@@ -195,9 +195,9 @@ def config_set_actions(rtsprofile):
     return set_values + set_active
 
 
-def rebuild_system_actions(rtsprofile):
+def rebuild_system_actions(rtsprofile, strict=False):
     checks = check_required_component_actions(rtsprofile)
-    data_conn_checks, data_connections = data_connection_actions(rtsprofile)
+    data_conn_checks, data_connections = data_connection_actions(rtsprofile, strict)
     svc_conn_checks, svc_connections = service_connection_actions(rtsprofile)
     config_actions = config_set_actions(rtsprofile)
 
@@ -205,7 +205,7 @@ def rebuild_system_actions(rtsprofile):
             svc_connections + config_actions
 
 
-def resurrect(profile=None, xml=True, dry_run=False, tree=None):
+def resurrect(profile=None, xml=True, dry_run=False, tree=None, strict=True):
     # Load the profile
     if profile:
         # Read from a file
@@ -223,7 +223,7 @@ def resurrect(profile=None, xml=True, dry_run=False, tree=None):
             rtsp = rtsprofile.rts_profile.RtsProfile(yaml_spec=lines)
 
     # Build a list of actions to perform that will reconstruct the system
-    actions = rebuild_system_actions(rtsp)
+    actions = rebuild_system_actions(rtsp, strict)
     if dry_run:
         for a in actions:
             print(a)
@@ -250,6 +250,9 @@ Recreate an RT system using an RTSProfile.'''
             default=True, help='Use XML input format. [Default: True]')
     parser.add_option('-y', '--yaml', dest='xml', action='store_false',
             help='Use YAML input format. [Default: False]')
+    parser.add_option('--strict-path', dest='strict', action='store_true',
+            default=False, help="Strictly set the RTC path"
+            "do anything.  [Default: %default]")
 
     if argv:
         sys.argv = [sys.argv[0]] + argv
@@ -270,7 +273,7 @@ Recreate an RT system using an RTSProfile.'''
 
     try:
         resurrect(profile=profile, xml=options.xml, dry_run=options.dry_run,
-                tree=tree)
+                tree=tree, strict=options.strict)
     except Exception as e:
         if options.verbose:
             traceback.print_exc()
