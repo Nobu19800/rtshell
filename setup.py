@@ -390,7 +390,7 @@ install.sub_commands.insert(2, ('install_scripts', None))
 
 
 setuptools.setup(name='rtshell-aist',
-                 version='4.2.3',
+                 version='4.2.4',
                  description='Shell commands for managing RT Components and RT Systems.',
                  author='Geoffrey Biggs and contributors',
                  author_email='geoffrey.biggs@aist.go.jp',
@@ -414,7 +414,7 @@ setuptools.setup(name='rtshell-aist',
                      'Topic :: Utilities'
                      ],
                  packages=setuptools.find_packages(),
-                 install_requires=['rtctree>=4', 'rtsprofile>=4'],
+                 install_requires=['rtctree-aist>=4', 'rtsprofile-aist>=4'],
                  cmdclass={'build_shell_support': BuildShellSupport,
                            'install_shell_support': InstallShellSupport,
                            'build_documentation': BuildDocumentation,
