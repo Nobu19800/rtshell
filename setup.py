@@ -308,7 +308,7 @@ class BuildShellSupport(Command):
         bash_completion_path = os.path.join(bash_completion_dir, 'bash_completion')
         if not os.path.isdir(bash_completion_dir):
             self.mkpath(bash_completion_dir)
-        with open(bash_completion_path, 'w', newline='') as f:
+        with open(bash_completion_path, 'w', encoding='utf-8', newline='') as f:
             f.write(bash_comp)
 
     def copy_shell_support(self):
