@@ -390,7 +390,7 @@ install.sub_commands.insert(2, ('install_scripts', None))
 
 
 setuptools.setup(name='rtshell-aist',
-                 version='4.2.4',
+                 version='4.2.7',
                  description='Shell commands for managing RT Components and RT Systems.',
                  author='Geoffrey Biggs and contributors',
                  author_email='geoffrey.biggs@aist.go.jp',
