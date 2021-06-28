@@ -291,10 +291,10 @@ class BuildShellSupport(Command):
         COMPOPT_FILENAME = 'compopt -o filenames'
         COMPLETE_NOSPACE = '-o nospace'
         if sys.version_info[0] == 2:
-            with open(os.path.join('data', 'bash_completion.in'), 'rt') as f:
+            with open(os.path.join('data', 'bash_completion.in'), 'rt', newline='') as f:
                 bash_comp = f.read()
         else:
-            with open(os.path.join('data', 'bash_completion.in'), 'rt', encoding='utf-8') as f:
+            with open(os.path.join('data', 'bash_completion.in'), 'rt', encoding='utf-8', newline='') as f:
                 bash_comp = f.read()
         if sys.platform == 'darwin':
             bash_comp = bash_comp.replace('@COMPOPT_NOSPACE@', ':')
@@ -308,7 +308,7 @@ class BuildShellSupport(Command):
         bash_completion_path = os.path.join(bash_completion_dir, 'bash_completion')
         if not os.path.isdir(bash_completion_dir):
             self.mkpath(bash_completion_dir)
-        with open(bash_completion_path, 'w') as f:
+        with open(bash_completion_path, 'w', encoding='utf-8', newline='') as f:
             f.write(bash_comp)
 
     def copy_shell_support(self):
@@ -390,7 +390,7 @@ install.sub_commands.insert(2, ('install_scripts', None))
 
 
 setuptools.setup(name='rtshell-aist',
-                 version='4.2.4',
+                 version='4.2.7',
                  description='Shell commands for managing RT Components and RT Systems.',
                  author='Geoffrey Biggs, Noriaki Ando and contributors',
                  author_email='n-ando@aist.go.jp',
