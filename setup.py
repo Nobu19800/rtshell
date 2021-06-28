@@ -392,7 +392,7 @@ install.sub_commands.insert(2, ('install_scripts', None))
 setuptools.setup(name='rtshell-aist',
                  version='4.2.4',
                  description='Shell commands for managing RT Components and RT Systems.',
-                 author='Noriaki Ando and contributors',
+                 author='Geoffrey Biggs, Noriaki Ando and contributors',
                  author_email='n-ando@aist.go.jp',
                  url='https://github.com/OpenRTM/rtshell',
                  license='LGPL3',
