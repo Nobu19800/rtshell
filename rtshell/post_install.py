@@ -151,10 +151,10 @@ def add_shell_support(prefix, bashrc_path=None):
     script_path = pkg_resources.resource_filename('rtshell.data',
             'shell_support')
     source_line = 'source {}'.format(os.path.abspath(script_path))
-    if not bashrc_path:
-        bashrc_path = os.path.expanduser('~/.bashrc')
-    else:
-        bashrc_path = os.path.expanduser(bashrc_path)
+    username = os.getenv('SUDO_USER')
+    if not username:
+        username = os.getenv('USER')
+    bashrc_path = os.path.expanduser('~' + username + '/.bashrc')
     if os.path.exists(bashrc_path) and os.path.isfile(bashrc_path):
         # Check if the source line already exists
         with open(bashrc_path, 'r') as f:
