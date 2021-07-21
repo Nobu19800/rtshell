@@ -9,9 +9,9 @@
 # http://www.gnu.org/licenses/lgpl-3.0.en.html
 
 if [ `uname` = "Darwin" ]; then
-   PYTHON_COMMAND=python
+   PYTHON_COMMAND=python3
 elif [ `uname` = "Linux" ]; then
-   PYTHON_COMMAND=python
+   PYTHON_COMMAND=python3
 fi
 
 rtcwd()
