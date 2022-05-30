@@ -76,7 +76,8 @@ def create_and_link_dir_content(source, dest, dir_type='', remove=False):
         else:
             logging.info('Destination {} directory already exists; skipping: '
                 '{}'.format(dir_type, dest))
-    os.makedirs(dest)
+    else:
+        os.makedirs(dest)
     # Link all files in source
     for f in [f for f in os.listdir(source) if
             os.path.isfile(os.path.join(source, f))]:

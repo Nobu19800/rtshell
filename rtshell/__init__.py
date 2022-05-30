@@ -3,7 +3,7 @@
 
 '''rtshell
 
-Copyright (C) 2009-2015
+Copyright (C) 2009-2022
     Geoffrey Biggs
     RT-Synthesis Research Group
     Intelligent Systems Research Institute,
@@ -18,7 +18,7 @@ Commands for managing RT Components and RTM-based systems from a shell.
 '''
 
 
-RTSH_VERSION = '4.2.8'
+RTSH_VERSION = '4.2.9'
 
 
 # vim: tw=79
