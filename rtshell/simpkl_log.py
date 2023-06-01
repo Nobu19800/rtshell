@@ -197,7 +197,7 @@ class SimplePickleLog(ilog.Log):
                 self._file.tell()))
             self._buf_start = self._file.tell()
             # Put some blank space to write the end marker
-            self._file.write(''.ljust(self.BUFFER_SIZE))
+            self._file.write(''.ljust(self.BUFFER_SIZE).encode('utf-8'))
             self._vb_print('Wrote buffer of length {0} at position {1}'.format(
                 self.BUFFER_SIZE, self._buf_start))
             self._write_ind = 0
