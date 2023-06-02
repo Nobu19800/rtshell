@@ -52,7 +52,11 @@ def print_logs(paths, options, tree=None):
         parsed = [p[2] for p in paths]
         tree = rtctree.tree.RTCTree(paths=parsed, filter=parsed)
 
-    filters = ','.join(options.filters)
+    if options.filters:
+        filters = ','.join(options.filters)
+    else:
+        filters = 'ALL'
+    
     ids = []
     try:
         for p in paths:
@@ -94,7 +98,7 @@ View a component logs.'''
     version = rtshell.RTSH_VERSION
     parser = optparse.OptionParser(usage=usage, version=version)
     parser.add_option('-f', '--filter', dest='filters', action='append',
-            type='string', default='ALL',
+            type='string', default=[],
             help='Event source filters. [Default: %default]')
     parser.add_option('-l', '--level', dest='level', action='store',
             type='string', default='NORMAL',
