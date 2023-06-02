@@ -97,7 +97,7 @@ View a component logs.'''
             type='string', default='ALL',
             help='Event source filters. [Default: %default]')
     parser.add_option('-l', '--level', dest='level', action='store',
-            type='string', default='NORMAL',
+            type='string', default='INFO',
             help='Log level. [Default: %default]')
     parser.add_option('-v', '--verbose', dest='verbose', action='store_true',
             default=False,
